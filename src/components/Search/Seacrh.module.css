@@ -1,0 +1,27 @@
+.Container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.Input {
+    width: 100%;
+    padding: 1.2rem 1.2rem;
+    font-family: inherit;
+    border: none;
+    border-bottom: 1px solid #272728;
+    background-color: transparent;
+    font-size: 1.6rem;
+    color: #2c2c2c;
+    transition: all 0.2s ease;
+}
+
+.CityList {
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    width: 80%;
+    top: 3.35rem;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    overflow: hidden;
+}

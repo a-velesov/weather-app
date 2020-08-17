@@ -1,0 +1,10 @@
+.SuggestionLink {
+    color: rgb(32, 121, 201);
+    display: block;
+    text-align: left;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px dotted rgb(204, 204, 204);
+}
