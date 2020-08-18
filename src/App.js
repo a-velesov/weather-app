@@ -1,16 +1,10 @@
 import React from 'react';
 import './App.css';
-import Search from './components/Search/Search';
-import { CityList } from './components/CityList/CityList';
+import { Layout } from './components/Layout/Layout';
 
 function App() {
 
-  return (
-    <>
-      <Search />
-      <CityList />
-    </>
-  );
+  return <Layout />
 }
 
 export default App;

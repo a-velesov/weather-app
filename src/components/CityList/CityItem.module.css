@@ -1,0 +1,5 @@
+.CityItem {
+    box-sizing: content-box;
+    padding: 10px;
+    transition: transform .5s;
+}

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DebounceInput } from 'react-debounce-input';
-import { useDispatch } from 'react-redux';
 import { fetchCities } from '../../api/placeSuggestion';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import Suggestion from './Suggestion';
