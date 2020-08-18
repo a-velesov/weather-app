@@ -14,7 +14,7 @@ export const toggleDarkMode = () => ({
   type: actionTypes.TOGGLE_DARK_MODE,
 });
 
-export const cityList = (city) => ({
-  type: actionTypes.CITY_LIST,
+export const setCityList = (city) => ({
+  type: actionTypes.SET_CITY_LIST,
   payload: city
 })

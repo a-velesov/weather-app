@@ -1,0 +1,10 @@
+.Storage {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.StorageList {
+    padding: 0;
+    list-style: none;
+    margin-top: 30%;
+}
