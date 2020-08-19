@@ -9,7 +9,7 @@ const Suggestion = (props) => {
   const dispatch = useDispatch();
 
   const onClick = () => {
-   // dispatch(fetchWeatherFromApi(props.label.split(',')[0]));
+    dispatch(fetchWeatherFromApi(props.label.split(',')[0]));
     dispatch(setCityList(props.label))
     setTimeout(() => {
       props.hideSuggestionFn();

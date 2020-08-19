@@ -19,6 +19,10 @@
     height: 100%;
 }
 
+.StorageTitle {
+    align-self: center;
+}
+
 
 
 @media (max-width: 1000px) {

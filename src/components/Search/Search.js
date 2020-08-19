@@ -36,7 +36,7 @@ const Search = () => {
   };*/
   return (
     <div className={classes.Container}>
-      <DebounceInput className={classes.Input} element={'input'} debounceTimeout={300} onChange={onSearchInputChanged} placeholder="Search for location" />
+      <DebounceInput className={classes.Input} element={'input'} debounceTimeout={300} onChange={onSearchInputChanged} placeholder="Введите город..." />
 
       {showSuggestions && (
         <div className={classes.CityList} ref={suggestionRef}>

@@ -2,13 +2,17 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './CityList.module.css'
 import { CityItem } from './CityItem';
-import { fetchWeatherFromApi } from '../../store/actions/weather';
+import { selectedSearchHistory } from '../Search/searchHistory';
 
 export const CityList = (props) => {
 
   const local = useSelector((state) => state.app.cityList)
-  const dispatch = useDispatch();
 
+  const { weather } = useSelector((store) => ({
+    weather: store.weather.weatherData,
+  }));
+
+  const searchHistory = useSelector(selectedSearchHistory);
 
 
   const onClickWeather = (key, i) => {
@@ -23,9 +27,9 @@ export const CityList = (props) => {
     {local
       ? <div className={classes.Storage}>
         <ul className={classes.StorageList}>
-          <h2>Избранное</h2>
+          <h2 className={classes.StorageTitle}>История поиска</h2>
           { local.map((key, i) => (
-            <CityItem city={key} key={i}>{key}</CityItem>
+            <CityItem temp={weather.main.temp} city={key} key={i}>{key}</CityItem>
           )) }
         </ul>
       </div>

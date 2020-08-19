@@ -1,0 +1,54 @@
+.WeatherContainer {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.CurrentWeatherContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+    .CurrentWeatherContainer {
+        justify-content: flex-start;
+    }
+}
+
+.CurrentWeather {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 1.5rem;
+    width: 25rem;
+}
+
+@media (max-width: 800px) {
+
+
+    h4 {
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: #396bae;
+        margin-bottom: 2rem;
+    }
+
+    span {
+        font-weight: 200;
+        font-size: 7rem;
+        color: #4a6fa1;
+        margin-left: 1.5rem;
+        line-height: 1;
+    }
+
+    sup {
+        line-height: 0;
+    }
+
+    h6 {
+        font-size: 1.375rem;
+        text-align: left;
+        color: #7b98b2;
+    }
+}

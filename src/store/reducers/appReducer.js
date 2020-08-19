@@ -5,6 +5,7 @@ const initialState = {
   isInitial: true,
   cityList: JSON.parse(window.localStorage.getItem('city')),
   darkMode: JSON.parse(localStorage.getItem('darkMode')),
+  tempUnit: actionTypes.CELCIUS
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -14,6 +15,12 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         darkMode: !state.darkMode,
+      };
+
+    case actionTypes.CHANGE_TEMP_UNIT:
+      return {
+        ...state,
+        tempUnit: state.tempUnit === actionTypes.CELCIUS ? actionTypes.FAHRENHEIT : actionTypes.CELCIUS,
       };
 
     case actionTypes.SET_CITY_LIST:

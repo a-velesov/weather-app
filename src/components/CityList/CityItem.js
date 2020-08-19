@@ -1,17 +1,18 @@
 import React from 'react';
 import classes from './CityItem.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeatherFromApi } from '../../store/actions/weather';
 
 export const CityItem = (props) => {
 
+  const { weather } = useSelector((store) => ({
+    weather: store.weather.weatherData,
+  }));
+
+
   const dispatch = useDispatch();
 
   const onClickWeather = (key) => {
-    /* let local = new Array(key);
-     console.log(clickWeather.join(' '));*/
-    console.log(key);
-
     dispatch(fetchWeatherFromApi(key.split(',')[0]));
   }
 

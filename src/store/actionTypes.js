@@ -6,6 +6,11 @@ export const FETCH_WEATHER_ERROR = 'FETCH_WEATHER_ERROR';
 export const SET_IS_INITIAL = 'SET_IS_INITIAL';
 export const TOGGLE_DARK_MODE = 'TOGGLE_DARK_MODE';
 export const SET_IS_LOADING = 'SET_IS_LOADING';
+export const CHANGE_TEMP_UNIT = 'CHANGE_TEMP_UNIT';
+
 export const SET_CITY_LIST = 'SET_CITY_LIST';
+
+export const CELCIUS = 'CELCIUS';
+export const FAHRENHEIT = 'FAHRENHEIT'
 
 

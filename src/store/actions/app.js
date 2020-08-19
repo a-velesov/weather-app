@@ -1,5 +1,10 @@
 import * as actionTypes from '../actionTypes';
 
+export const changeDegreeType = () => ({
+  type: actionTypes.CHANGE_TEMP_UNIT,
+  payload: {},
+});
+
 export const setIsInitialState = (state) => ({
   type: actionTypes.SET_IS_INITIAL,
   payload: state,
