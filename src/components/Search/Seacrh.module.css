@@ -1,11 +1,11 @@
 .Container {
-    max-width: calc(70vw - 350px);
-    margin: 0 auto;
+    max-width: calc(80vw - 350px);
     min-height: calc(100vh - 15rem);
+    margin: 0 auto;
 }
 
 .Input {
-    width: 100%;
+    width: 96%;
     padding: 1rem;
     font-family: inherit;
     border: none;
@@ -15,18 +15,28 @@
     color: #2c2c2c;
     transition: all 0.2s ease;
     align-self: center;
+    position: relative;
 }
 
 .CityList {
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
-    width: 80%;
+    width: 100%;
     top: 3rem;
     background: rgb(255, 255, 255);
     border-radius: 5px;
     overflow: hidden;
 }
+
+.SearchContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
 
 @media (max-width: 1000px) {
     .Container {

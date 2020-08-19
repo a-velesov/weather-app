@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import WeatherIcon from './WeatherIcon';
-import { Temperature } from './Temperature';
-import { changeDegreeType } from '../../store/actions/app';
-import { ToggleTemp } from '../ToggleTemp/ToggleTemp';
 import classes from './Weather.module.css'
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
-export const Weather = () => {
+const Weather = (props) => {
 
   const { weather, degreeType, isInitial, isError } = useSelector((store) => ({
     weather: store.weather.weatherData,
@@ -14,6 +13,7 @@ export const Weather = () => {
     isInitial: store.app.isInitial,
     isError: store.weather.isError,
   }));
+
 
   const dispatch = useDispatch()
 
@@ -28,10 +28,10 @@ export const Weather = () => {
   return (
     <div className={classes.WeatherContainer }>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        {/*<button onClick={props.history.goBack}>вернуться к поиску</button>*/}
+        <Link to='/'>вернуться к поиску</Link>
         <h4>Current Weather</h4>
-        <div>
-          <ToggleTemp onClick={() => dispatch(changeDegreeType())} />
-        </div>
+
       </div>
 
       <div className={classes.CurrentWeatherContainer}>
@@ -41,7 +41,7 @@ export const Weather = () => {
           <div style={{ display: 'flex' }}>
             <WeatherIcon code={weather.weather.id} big />
             <span>
-              <Temperature value={weather.main.temp} />
+              {weather.main.temp}
               <sup>&deg;</sup>
             </span>
           </div>
@@ -58,3 +58,6 @@ export const Weather = () => {
     </div>
   );
 };
+
+
+export default withRouter(Weather);

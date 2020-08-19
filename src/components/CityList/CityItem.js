@@ -1,26 +1,27 @@
 import React from 'react';
 import classes from './CityItem.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchWeatherFromApi } from '../../store/actions/weather';
+import { withRouter } from 'react-router';
 
-export const CityItem = (props) => {
-
-  const { weather } = useSelector((store) => ({
-    weather: store.weather.weatherData,
-  }));
-
+const CityItem = (props) => {
 
   const dispatch = useDispatch();
 
   const onClickWeather = (key) => {
     dispatch(fetchWeatherFromApi(key.split(',')[0]));
+    props.history.push('/weather')
   }
 
   return (
     <>
       <li className={classes.CityItem} onClick={() => onClickWeather(props.city)}>
+        <i className="fas fa-map-marker-alt"/>
         { props.children }
       </li>
     </>
   );
 };
+
+
+export default withRouter(CityItem)

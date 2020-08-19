@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './CityList.module.css'
-import { CityItem } from './CityItem';
+import CityItem from './CityItem';
 import { selectedSearchHistory } from '../Search/searchHistory';
+import { fetchWeatherFromApi } from '../../store/actions/weather';
 
 export const CityList = (props) => {
 
@@ -12,6 +13,8 @@ export const CityList = (props) => {
     weather: store.weather.weatherData,
   }));
 
+  const dispatch = useDispatch();
+
   const searchHistory = useSelector(selectedSearchHistory);
 
 
@@ -19,7 +22,9 @@ export const CityList = (props) => {
    /* let local = new Array(key);
     console.log(clickWeather.join(' '));*/
 
-    //dispatch(fetchWeatherFromApi(clickWeather));
+    console.log('onClickWeather');
+
+    dispatch(fetchWeatherFromApi(key));
   }
 
   return (
@@ -29,7 +34,7 @@ export const CityList = (props) => {
         <ul className={classes.StorageList}>
           <h2 className={classes.StorageTitle}>История поиска</h2>
           { local.map((key, i) => (
-            <CityItem temp={weather.main.temp} city={key} key={i}>{key}</CityItem>
+            <CityItem temp={weather.main.temp} fn={() => onClickWeather(key)} city={key} key={i}>{key}</CityItem>
           )) }
         </ul>
       </div>
