@@ -13,7 +13,7 @@ const Suggestion = (props) => {
     dispatch(fetchWeatherFromApi(props.label.split(',')[0]));
     dispatch(setCityList(props.label));
 
-    props.history.push('/weather')
+    /*props.history.push('/weather')*/
 
     setTimeout(() => {
       props.hideSuggestionFn();

@@ -4,8 +4,6 @@ import Search from '../Search/Search';
 import { CityList } from '../CityList/CityList';
 import { Header } from '../Header/Header';
 import Weather from '../Weather/Weather';
-import { Route } from 'react-router-dom';
-import { Switch } from 'react-router';
 import { useSelector } from 'react-redux';
 
 export const Layout = (props) => {
@@ -22,10 +20,8 @@ export const Layout = (props) => {
     <div className={classes[style.join('.')]}>
 
       <Header />
-      <Switch>
-      <Route path='/weather' component={ Weather } />
-      <Route path='/' exact component={ Search } />
-      </Switch>
+      <Search />
+      <Weather />
       <CityList />
     </div>
   );

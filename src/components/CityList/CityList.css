@@ -1,0 +1,108 @@
+/* Position and sizing of burger button */
+.bm-burger-button {
+    position: absolute;
+    width: 3rem;
+    height: 2rem;
+    left: 36px;
+    top: 36px;
+}
+
+.bm-burger-button::after{
+    content: 'История поиска';
+    color: #728c97;
+    top: 45px;
+    font-size: 13px;
+    position: absolute;
+    text-align: center;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+    background: #fff;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+    background: #728c97;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+    width: 4rem;
+    height: 2rem;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+    background: #fff;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+    top: 0;
+}
+
+/* General sidebar styles */
+.bm-menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    width: 250px;
+    /*width: max-content;*/
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: white;
+    box-sizing: border-box;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+    fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    /*overflow-y: scroll;*/
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Individual item */
+.bm-item {
+    box-sizing: content-box;
+    padding: 10px;
+    margin-bottom: 15px;
+    transition: transform .5s;
+    border: #2c2c2c 1px solid;
+    color: #2c2c2c;
+}
+
+.bm-item i {
+    padding-right: 5px;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+    opacity: 0 !important;
+    top: 0;
+}
+
+@media (max-width: 800px) {
+    .bm-burger-button {
+        width: 70px;
+    }
+
+    .bm-cross-button {
+        display: none;
+    }
+
+}
