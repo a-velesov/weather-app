@@ -18,10 +18,11 @@ export const Layout = (props) => {
 
   return (
     <div className={classes[style.join('.')]}>
-
       <Header />
+      <main className={classes.Main}>
       <Search />
       <Weather />
+      </main>
       <CityList />
     </div>
   );

@@ -10,7 +10,6 @@ export const CityList = (props) => {
 
   const local = useSelector((state) => state.app.cityList);
 
-
   const { weather } = useSelector((store) => ({
     weather: store.weather.weatherData,
   }));
@@ -18,8 +17,6 @@ export const CityList = (props) => {
   const dispatch = useDispatch();
 
   const searchHistory = useSelector(selectedSearchHistory);
-
-
 
   const onClickWeather = (key, i) => {
     /* let local = new Array(key);
@@ -32,10 +29,9 @@ export const CityList = (props) => {
 
   return (
     <>
-
       { local
         ? <>
-          <Menu pageWrapId={ "page-wrap" } isOpen>
+          <Menu pageWrapId={ "page-wrap" } isOpen={false}>
           <div className={'bm-menu-wrap'} id='page-wrap'>
             <div className='bm-menu'>
             <ul className='bm-item-list'>

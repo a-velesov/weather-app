@@ -1,7 +1,7 @@
 .Dark {
     min-width: 100vw;
     min-height: 100vh;
-    background: linear-gradient(to right, rgba(0,0,0,.6), rgba(0,0,0,.6)), url("../../assets/img/night.svg") no-repeat top center fixed;
+    background: url("../../assets/img/night.svg") no-repeat top center fixed;
     background-size: cover;
     color: white;
 }
@@ -11,5 +11,9 @@
     min-height: 100vh;
     background: linear-gradient(to right, rgba(255,255,255,.4), rgba(255,255,255,.4)), url("../../assets/img/day.svg") no-repeat top center fixed;
     background-size: cover;
+}
+
+.Main {
+    min-height: calc(100vh - 15rem);
 }
 

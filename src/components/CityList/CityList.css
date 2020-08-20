@@ -1,10 +1,11 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
-    position: absolute;
+    position: fixed;
     width: 3rem;
     height: 2rem;
     left: 36px;
     top: 36px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
 }
 
 .bm-burger-button::after{
@@ -50,9 +51,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
     position: fixed;
     display: flex;
     flex-direction: column;
-    height: 95%;
+    height: 100%;
     width: 250px;
-    /*width: max-content;*/
     top: 0;
     left: 0;
     padding: 10px;
@@ -68,7 +68,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Wrapper for item list */
 .bm-item-list {
     list-style: none;
-    padding: 0;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     /*overflow-y: scroll;*/

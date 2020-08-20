@@ -1,12 +1,18 @@
+@font-face {
+  font-family: 'Barlow-Regular';
+  src: url("assets/fonts/Barlow-Regular.ttf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
 * {
   outline: none;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  overflow-x: hidden;
+  font-family: 'Barlow-Regular', 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

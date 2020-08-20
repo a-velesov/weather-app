@@ -7,15 +7,12 @@ import { Link } from 'react-router-dom';
 
 const Weather = (props) => {
 
-  const { weather, degreeType, isInitial, isError } = useSelector((store) => ({
+  const { weather, isInitial, isError } = useSelector((store) => ({
     weather: store.weather.weatherData,
-    degreeType: store.app.tempUnit,
     isInitial: store.app.isInitial,
     isError: store.weather.isError,
   }));
 
-
-  const dispatch = useDispatch()
 
   useEffect(() => {
     if (isError) {
@@ -28,7 +25,6 @@ const Weather = (props) => {
   return (
     <div className={classes.WeatherContainer }>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        {/*<button onClick={props.history.goBack}>вернуться к поиску</button>*/}
         <Link to='/'>вернуться к поиску</Link>
         <h4>Current Weather</h4>
 

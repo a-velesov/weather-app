@@ -1,31 +1,33 @@
 .Container {
-    max-width: calc(80vw - 350px);
-    min-height: calc(100vh - 15rem);
+    max-width: 60rem;
     margin: 0 auto;
+    overflow: hidden;
+    padding: 0 3rem;
 }
 
 .Input {
-    width: 96%;
-    padding: 1rem;
-    font-family: inherit;
-    border: none;
-    border-bottom: 1px solid #272728;
-    background-color: transparent;
+    width: 90%;
+    font-family: 'Barlow-Regular', sans-serif;
+    background: linear-gradient(to right, rgba(255, 255, 255, .7), rgba(255, 255, 255, .9));
+    border-radius: 50px;
     font-size: 1.6rem;
     color: #2c2c2c;
     transition: all 0.2s ease;
     align-self: center;
     position: relative;
+    border: none;
+    border-bottom: 1px solid #fafafb;
+    padding: 1rem 5%;
 }
 
 .CityList {
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     top: 3rem;
-    background: rgb(255, 255, 255);
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.8);
     overflow: hidden;
 }
 
@@ -33,13 +35,16 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
+.Toggle {
+    margin-bottom: 20px;
+}
 
 
 @media (max-width: 1000px) {
     .Container {
-        max-width: 70vw;
+        max-width: 40rem;
     }
 }
