@@ -5,13 +5,16 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import Suggestion from './Suggestion';
 import classes from './Seacrh.module.css';
 import { ReactComponent as SearchIcon } from './../../assets/img/search.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWeatherFromApi } from '../../store/actions/weather';
 
 const Search = () => {
   const suggestionRef = useRef(null);
   const [ suggestions, setSuggestions ] = useState([ { matching_full_name: '' } ]);
   const [ showSuggestions, setShowSuggestions ] = useState(false);
   const [ searchTerm, setSearchTerm ] = useState('');
+
+  const dispatch = useDispatch();
 
   const { weather } = useSelector((store) => ({
     weather: store.weather.weatherData,
@@ -33,6 +36,7 @@ const Search = () => {
    });
    }, [ suggestions ]);*/
 
+
   useClickOutside(suggestionRef, () => setShowSuggestions(false));
 
   const onSearchInputChanged = (e) => {
@@ -46,7 +50,7 @@ const Search = () => {
   const eventKeyDown = (e) => {
     if(e.key === 'Enter' || e.keyCode === 13) {
       e.preventDefault();
-      console.log('enter');
+      dispatch(fetchWeatherFromApi(searchTerm, searchTerm))
     }
   };
 

@@ -7,9 +7,9 @@ export const fetchWeatherStart = () => ({
   type: actionTypes.FETCH_WEATHER_START,
 });
 
-export const fetchWeatherSuccess = (weather) => ({
+export const fetchWeatherSuccess = (weather, id) => ({
   type: actionTypes.FETCH_WEATHER_SUCCESS,
-  payload: { weather },
+  payload: { weather }, id
 });
 
 export const fetchWeatherFail = (error) => ({
@@ -17,7 +17,7 @@ export const fetchWeatherFail = (error) => ({
   payload: error,
 });
 
-export const fetchWeatherFromApi = (city, lat, lng) => {
+export const fetchWeatherFromApi = (city, id, lat, lng) => {
   return (dispatch) => {
     dispatch(setIsLoading(true));
     dispatch(fetchWeatherStart());
@@ -28,7 +28,7 @@ export const fetchWeatherFromApi = (city, lat, lng) => {
       })
       .then((res) => {
         const { weather } = transformWeatherData(res);
-        dispatch(fetchWeatherSuccess(weather));
+        dispatch(fetchWeatherSuccess(weather, id));
         dispatch(setIsInitialState(false));
         dispatch(setIsLoading(false));
       })

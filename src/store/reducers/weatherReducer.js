@@ -38,7 +38,7 @@ export const weatherReducer = (state = initialState, action) => {
     case actionTypes.FETCH_WEATHER_SUCCESS:
       return {
         ...state,
-        weatherData: action.payload.weather,
+        weatherData: {...state.weatherData, [action.id]: action.payload.weather },
       };
     case actionTypes.FETCH_WEATHER_ERROR:
       return {
