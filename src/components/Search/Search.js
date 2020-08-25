@@ -5,9 +5,7 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import Suggestion from './Suggestion';
 import classes from './Seacrh.module.css';
 import { ReactComponent as SearchIcon } from './../../assets/img/search.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import DarkModeToggle from 'react-dark-mode-toggle';
-import { toggleDarkMode } from '../../store/actions/app';
+import { useSelector } from 'react-redux';
 
 const Search = () => {
   const suggestionRef = useRef(null);
@@ -15,8 +13,9 @@ const Search = () => {
   const [ showSuggestions, setShowSuggestions ] = useState(false);
   const [ searchTerm, setSearchTerm ] = useState('');
 
-  const dispatch = useDispatch();
-  const isDarkMode = useSelector((state) => state.app.darkMode);
+  const { weather } = useSelector((store) => ({
+    weather: store.weather.weatherData,
+  }));
 
   useEffect(() => {
     if(!searchTerm) {
@@ -28,6 +27,12 @@ const Search = () => {
     });
   }, [ searchTerm ]);
 
+  /*  useEffect(() => {
+   suggestions.slice(0, 6).map((s, i) => {
+   dispatch(fetchWeatherFromApi(s.matching_full_name.split(',')[0]));
+   });
+   }, [ suggestions ]);*/
+
   useClickOutside(suggestionRef, () => setShowSuggestions(false));
 
   const onSearchInputChanged = (e) => {
@@ -38,6 +43,13 @@ const Search = () => {
     e.target.value = '';
   };
 
+  const eventKeyDown = (e) => {
+    if(e.key === 'Enter' || e.keyCode === 13) {
+      e.preventDefault();
+      console.log('enter');
+    }
+  };
+
   /*  const showPosition = (position) => {
    dispatch(
    fetchWeatherFromApi({
@@ -46,13 +58,9 @@ const Search = () => {
    })
    );
    };*/
+
   return (
     <div className={ classes.Container }>
-
-
-      <div className={ classes.Toggle }>
-        <DarkModeToggle checked={ isDarkMode } onChange={ () => dispatch(toggleDarkMode()) } size={ 60 } />
-      </div>
       <div className={ classes.SearchContainer }>
         <SearchIcon style={ {
           width: '20px',
@@ -64,13 +72,23 @@ const Search = () => {
           opacity: .7,
         } }
         />
-        <DebounceInput value={ searchTerm } onBlur={ (e) => onBlurInput(e) } className={ classes.Input } element={ 'input' } debounceTimeout={ 300 } onChange={ onSearchInputChanged } placeholder="Введите город..." />
+        <DebounceInput
+          className={ classes.Input }
+          value={ searchTerm }
+          placeholder="Введите город..."
+          onBlur={ (e) => onBlurInput(e) }
+          element={ 'input' } debounceTimeout={ 300 }
+          onChange={ onSearchInputChanged }
+          onKeyDown={ (e) => eventKeyDown(e) }
+        />
       </div>
       { showSuggestions && (
         <div className={ classes.CityList } ref={ suggestionRef }>
-          { suggestions?.slice(0, 6)?.map((s, i) => (
+          { suggestions.slice(0, 6).map((s, i) => (
             <Suggestion
-              key={ i }
+              key={ s.matching_full_name }
+              weather={ weather[s.matching_full_name] }
+              searchTerm={ searchTerm }
               label={ s.matching_full_name }
               inputActually={ (value) => {
                 setSearchTerm(value);
@@ -78,8 +96,7 @@ const Search = () => {
               hideSuggestionFn={ () => {
                 setShowSuggestions(false);
               } }
-            />
-          )) }
+            />)) }
         </div>
       ) }
     </div>

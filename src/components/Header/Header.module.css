@@ -2,5 +2,14 @@
     height: 15rem;
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+.Toggle {
+    margin-top: 45px;
+}
+
+@media (max-width: 400px) {
+    .Toggle {
+        display: none;
+    }
 }

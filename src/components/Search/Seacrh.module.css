@@ -20,6 +20,10 @@
     padding: 1rem 5%;
 }
 
+.Input::placeholder {
+    font-size: 1.5rem;
+}
+
 .CityList {
     display: flex;
     flex-direction: column;
@@ -38,13 +42,9 @@
     align-items: flex-start;
 }
 
-.Toggle {
-    margin-bottom: 20px;
-}
 
-
-@media (max-width: 1000px) {
-    .Container {
-        max-width: 40rem;
+@media (max-width: 400px) {
+    .Input {
+        z-index: 5;
     }
 }
