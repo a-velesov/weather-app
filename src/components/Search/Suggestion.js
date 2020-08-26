@@ -3,24 +3,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeatherFromApi } from '../../store/actions/weather';
 import classes from './Suggestion.module.css';
 import { setCityList } from '../../store/actions/app';
-import { withRouter } from 'react-router';
+import { Route, withRouter } from 'react-router';
 import { useEffect } from 'react';
+import Weather from '../Weather/Weather';
 
-const Suggestion = ({label, searchTerm, inputActually, hideSuggestionFn, weather }) => {
+const Suggestion = ({label, searchTerm, inputActually, hideSuggestionFn, weather, history }) => {
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchWeatherFromApi(label.split(',')[0], label));
+    dispatch(fetchWeatherFromApi(label, label));
   }, [ searchTerm ]);
 
   const onClick = () => {
-    dispatch(fetchWeatherFromApi(label.split(',')[0], label));
+    dispatch(fetchWeatherFromApi(label, label));
     dispatch(setCityList(label));
-    /*props.history.push('/weather')*/
+
 
     setTimeout(() => {
-      inputActually(label.split(',')[0]);
+      inputActually(label);
       hideSuggestionFn();
     }, 400);
   };

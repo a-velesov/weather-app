@@ -7,10 +7,12 @@ import classes from './Seacrh.module.css';
 import { ReactComponent as SearchIcon } from './../../assets/img/search.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeatherFromApi } from '../../store/actions/weather';
+import { Route, withRouter } from 'react-router';
+import Weather from '../Weather/Weather';
 
-const Search = () => {
+const Search = (props) => {
   const suggestionRef = useRef(null);
-  const [ suggestions, setSuggestions ] = useState([ { matching_full_name: '' } ]);
+  const [suggestions, setSuggestions] = useState([]);
   const [ showSuggestions, setShowSuggestions ] = useState(false);
   const [ searchTerm, setSearchTerm ] = useState('');
 
@@ -30,13 +32,6 @@ const Search = () => {
     });
   }, [ searchTerm ]);
 
-  /*  useEffect(() => {
-   suggestions.slice(0, 6).map((s, i) => {
-   dispatch(fetchWeatherFromApi(s.matching_full_name.split(',')[0]));
-   });
-   }, [ suggestions ]);*/
-
-
   useClickOutside(suggestionRef, () => setShowSuggestions(false));
 
   const onSearchInputChanged = (e) => {
@@ -51,6 +46,7 @@ const Search = () => {
     if(e.key === 'Enter' || e.keyCode === 13) {
       e.preventDefault();
       dispatch(fetchWeatherFromApi(searchTerm, searchTerm))
+/*      props.history.push('/weather')*/
     }
   };
 
@@ -90,10 +86,10 @@ const Search = () => {
         <div className={ classes.CityList } ref={ suggestionRef }>
           { suggestions.slice(0, 6).map((s, i) => (
             <Suggestion
-              key={ s.matching_full_name }
-              weather={ weather[s.matching_full_name] }
+              key={ s }
+              weather={ weather[s] }
               searchTerm={ searchTerm }
-              label={ s.matching_full_name }
+              label={ s }
               inputActually={ (value) => {
                 setSearchTerm(value);
               } }
@@ -103,8 +99,15 @@ const Search = () => {
             />)) }
         </div>
       ) }
+
+{/*      <Route path='/weather'
+             exact
+             render={(props) => (
+               <Weather {...props} exact weather={ weather[searchTerm] } />
+             )}
+      />*/}
     </div>
   );
 };
 
-export default Search;
+export default withRouter(Search);
