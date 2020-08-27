@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CityItem from './CityItem';
+import CityItem from './HistoryItem';
 import { selectedSearchHistory } from '../Search/searchHistory';
 import { fetchWeatherFromApi } from '../../store/actions/weather';
-import './CityList.css'
+import './HistoryList.css'
 import { slide as Menu } from 'react-burger-menu';
 
-export const CityList = (props) => {
+export const HistoryList = (props) => {
 
   const local = useSelector((state) => state.app.cityList);
 
@@ -37,7 +37,7 @@ export const CityList = (props) => {
             <ul className='bm-item-list'>
               <h2>История поиска</h2>
               { local.map((key, i) => (
-                <CityItem temp={ weather.main.temp } fn={ () => onClickWeather(key) } city={ key } key={ i }>{ key }</CityItem>
+                <CityItem fn={ () => onClickWeather(key) } city={ key } key={ i }>{ key }</CityItem>
               )) }
             </ul>
             </div>

@@ -1,12 +1,12 @@
 import React from 'react';
 import classes from './Layout.module.css';
 import Search from '../Search/Search';
-import { CityList } from '../CityList/CityList';
+import { HistoryList } from '../HistoryList/HistoryList';
 import { Header } from '../Header/Header';
 import Weather from '../Weather/Weather';
 import { useSelector } from 'react-redux';
 
-export const Layout = (props) => {
+export const Layout = () => {
   const darkMode = useSelector((state) => state.app.darkMode);
 
   const style = []
@@ -21,9 +21,9 @@ export const Layout = (props) => {
       <Header />
       <main className={classes.Main}>
       <Search />
-      <Weather />
+{/*      <Weather />*/}
       </main>
-      <CityList />
+      <HistoryList />
     </div>
   );
 };

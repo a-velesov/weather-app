@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { fetchWeatherFromApi } from '../../store/actions/weather';
 import { withRouter } from 'react-router';
 
-const CityItem = (props) => {
+const HistoryItem = (props) => {
 
   const dispatch = useDispatch();
 
@@ -23,4 +23,4 @@ const CityItem = (props) => {
 };
 
 
-export default withRouter(CityItem)
+export default withRouter(HistoryItem)
