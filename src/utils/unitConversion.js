@@ -17,3 +17,15 @@ export function kmToMile(n) {
 export function mileToKm(n) {
   return Math.round(n * 1.60934);
 }
+
+export function hPaToMMHg(hPa) {
+  return Math.round(hPa * 0.75);
+}
+
+export function localeTime(time) {
+  const date = time * 1000;
+  return new Date(date).toLocaleTimeString('ru-RU', {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+}

@@ -6,7 +6,7 @@ export const fetchCities = async (search) => {
       body: JSON.stringify({
         query: search,
         type: 'city',
-        language: 'en',
+        language: 'ru',
       }),
     })
   ).json();
