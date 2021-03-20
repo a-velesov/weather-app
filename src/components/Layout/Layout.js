@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 export const Layout = () => {
   const darkMode = useSelector((state) => state.app.darkMode);
 
-  const style = []
+  const style = [];
   if(darkMode) {
     style.push('Dark')
   } else {

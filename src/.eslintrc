@@ -1,0 +1,43 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "parser":  "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion":  2018,
+    "sourceType":  "module",
+    "ecmaFeatures": {
+      "jsx":  true
+    }
+  },
+  "rules":  {
+    "import/no-unresolved": [
+      2,
+      { "caseSensitive": false }
+    ],
+    "react/prop-types": 0,
+    "react/jsx-filename-extension": [0],
+    "linebreak-style": 0,
+    "no-use-before-define": "off",
+    "import/no-dynamic-require": "off",
+    "global-require": 0,
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "import/extensions": "off"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/extensions": [".ts", ".tsx"],
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}

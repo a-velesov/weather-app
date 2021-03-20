@@ -46,7 +46,7 @@ const Search = (props) => {
     if(e.key === 'Enter' || e.keyCode === 13) {
       e.preventDefault();
       dispatch(fetchWeatherFromApi(searchTerm, searchTerm))
-/*      props.history.push('/weather')*/
+      props.history.push('/weather')
     }
   };
 
@@ -100,12 +100,12 @@ const Search = (props) => {
         </div>
       ) }
 
-{/*      <Route path='/weather'
+      <Route path='/weather'
              exact
              render={(props) => (
                <Weather {...props} exact weather={ weather[searchTerm] } />
              )}
-      />*/}
+      />
     </div>
   );
 };

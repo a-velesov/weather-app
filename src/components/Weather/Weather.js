@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import WeatherIcon from './WeatherIcon';
 import classes from './Weather.module.css'
 import { withRouter } from 'react-router';
@@ -13,6 +13,8 @@ const Weather = (props) => {
     isError: store.weather.isError,
   }));
 
+  console.log(weather);
+
 
   useEffect(() => {
     if (isError) {
@@ -20,7 +22,7 @@ const Weather = (props) => {
     }
   }, [isError]);
 
-  if (isInitial) return <></>;
+  if (isInitial) return <div>Please select city</div>;
 
   return (
     <div className={classes.WeatherContainer }>
@@ -35,7 +37,7 @@ const Weather = (props) => {
           <h4>{weather.name}</h4>
 
           <div style={{ display: 'flex' }}>
-            <WeatherIcon code={weather.weather.id} big />
+            <WeatherIcon code={weather.id} big />
             <span>
               {weather.main.temp}
               <sup>&deg;</sup>
@@ -43,7 +45,7 @@ const Weather = (props) => {
           </div>
         </div>
 
-        <h6>{weather.weather.description}</h6>
+        <h6>{weather.description}</h6>
 
 
 
