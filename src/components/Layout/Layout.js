@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 
 export const Layout = () => {
   const darkMode = useSelector((state) => state.app.darkMode);
+  const currentWeather = useSelector((state) => state.weather.currentWeather);
+  const isInitial = useSelector((state) => state.app.isInitial);
 
   const style = [];
   if(darkMode) {
@@ -20,8 +22,10 @@ export const Layout = () => {
     <div className={classes[style.join('.')]}>
       <Header />
       <main className={classes.Main}>
-      <Search />
-{/*      <Weather />*/}
+        <Search />
+        {
+          currentWeather ? <Weather /> : null
+        }
       </main>
       <HistoryList />
     </div>

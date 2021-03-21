@@ -5,57 +5,70 @@ import classes from './Weather.module.css'
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
-const Weather = (props) => {
+const Weather = () => {
 
-  const { weather, isInitial, isError } = useSelector((store) => ({
-    weather: store.weather.weatherData,
+  const { currentWeather, isInitial, isError } = useSelector((store) => ({
+    currentWeather: store.weather.currentWeather,
     isInitial: store.app.isInitial,
     isError: store.weather.isError,
   }));
-
-  console.log(weather);
-
 
   useEffect(() => {
     if (isError) {
       console.log('Cannot load weather for this place');
     }
+    console.log(currentWeather, 'currentWeather');
   }, [isError]);
-
-  if (isInitial) return <div>Please select city</div>;
 
   return (
     <div className={classes.WeatherContainer }>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Link to='/'>вернуться к поиску</Link>
-        <h4>Current Weather</h4>
-
-      </div>
-
       <div className={classes.CurrentWeatherContainer}>
         <div className={classes.CurrentWeather}>
-          <h4>{weather.name}</h4>
+          <h4>{currentWeather?.name}</h4>
 
           <div style={{ display: 'flex' }}>
-            <WeatherIcon code={weather.id} big />
-            <span>
-              {weather.main.temp}
-              <sup>&deg;</sup>
-            </span>
+            <WeatherIcon code={currentWeather?.weather?.id} big />
+            <table>
+              <tr>
+                <td>Температура</td>
+                <td>{currentWeather?.main?.temp}<sup>&deg;</sup></td>
+              </tr>
+              <tr>
+                <td>Чувствуется как</td>
+                <td>{currentWeather?.main?.feels_like}<sup>&deg;</sup></td>
+              </tr>
+              <tr>
+                <td>Влажность</td>
+                <td>{currentWeather?.main?.humidity}%</td>
+              </tr>
+              <tr>
+                <td>Давление</td>
+                <td>{currentWeather?.main?.pressure}мм рт.</td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td>Осадки</td>
+                <td>{currentWeather?.weather?.description}</td>
+              </tr>
+              <tr>
+                <td>Ветер</td>
+                <td>{currentWeather?.wind?.speed} м/с</td>
+              </tr>
+              <tr>
+                <td>Восход солнца</td>
+                <td>{currentWeather?.sys?.sunrise.toLocaleString()}</td>
+              </tr>
+              <tr>
+                <td>Заход солнца</td>
+                <td>{currentWeather?.sys?.sunset.toLocaleString()}</td>
+              </tr>
+            </table>
           </div>
         </div>
-
-        <h6>{weather.description}</h6>
-
-
-
-
-
       </div>
-
     </div>
   );
 };
-
 
 export default withRouter(Weather);

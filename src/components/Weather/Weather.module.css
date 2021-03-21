@@ -2,12 +2,13 @@
     max-width: 50rem;
     margin: 0 auto;
     overflow: hidden;
-    padding: 0 3rem;
+    padding: 3rem;
 }
 
 .CurrentWeatherContainer {
     display: flex;
     flex-wrap: wrap;
+    background: linear-gradient(45deg, #ffffff, transparent);
 }
 
 @media (max-width: 800px) {
