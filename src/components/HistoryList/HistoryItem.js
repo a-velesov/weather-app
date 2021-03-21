@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchWeatherFromApi } from '../../store/actions/weather';
+import { fetchCurrentWeatherFromApi, fetchWeatherFromApi } from '../../store/actions/weather';
 import { withRouter } from 'react-router';
 
 const HistoryItem = (props) => {
@@ -8,7 +8,8 @@ const HistoryItem = (props) => {
   const dispatch = useDispatch();
 
   const onClickWeather = (key) => {
-    dispatch(fetchWeatherFromApi(key.split(',')[0]));
+    dispatch(fetchCurrentWeatherFromApi(key));
+    // dispatch(fetchWeatherFromApi(key.split(',')[0]));
     /*props.history.push('/weather')*/
   }
 

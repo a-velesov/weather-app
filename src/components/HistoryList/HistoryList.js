@@ -6,26 +6,9 @@ import { fetchWeatherFromApi } from '../../store/actions/weather';
 import './HistoryList.css'
 import { slide as Menu } from 'react-burger-menu';
 
-export const HistoryList = (props) => {
+export const HistoryList = () => {
 
   const local = useSelector((state) => state.app.cityList);
-
-  const { weather } = useSelector((store) => ({
-    weather: store.weather.weatherData,
-  }));
-
-  const dispatch = useDispatch();
-
-  const searchHistory = useSelector(selectedSearchHistory);
-
-  const onClickWeather = (key, i) => {
-    /* let local = new Array(key);
-     console.log(clickWeather.join(' '));*/
-
-    console.log('onClickWeather');
-
-    dispatch(fetchWeatherFromApi(key));
-  };
 
   return (
     <>
@@ -37,7 +20,7 @@ export const HistoryList = (props) => {
             <ul className='bm-item-list'>
               <h2>История поиска</h2>
               { local.map((key, i) => (
-                <CityItem fn={ () => onClickWeather(key) } city={ key } key={ i }>{ key }</CityItem>
+                <CityItem city={ key } key={ i }>{ key }</CityItem>
               )) }
             </ul>
             </div>

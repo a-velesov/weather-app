@@ -86,7 +86,7 @@ const Search = (props) => {
         <div className={ classes.CityList } ref={ suggestionRef }>
           { suggestions.slice(0, 6).map((s, i) => (
             <Suggestion
-              key={ s }
+              key={ i }
               weather={ weather[s] }
               searchTerm={ searchTerm }
               label={ s }
