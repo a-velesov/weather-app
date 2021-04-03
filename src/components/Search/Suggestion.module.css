@@ -14,3 +14,7 @@
     padding: 0.6rem 1rem;
     border-bottom: 1px dotted rgb(204, 204, 204);
 }
+
+.SuggestionTemp {
+    color: gray;
+}

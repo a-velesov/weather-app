@@ -1,54 +1,42 @@
 .WeatherContainer {
-    max-width: 50rem;
+    max-width: max-content;
     margin: 0 auto;
     overflow: hidden;
-    padding: 3rem;
+    padding: 2rem;
 }
 
 .CurrentWeatherContainer {
-    display: flex;
-    flex-wrap: wrap;
+    padding: 25px 10px;
     background: linear-gradient(45deg, #ffffff, transparent);
 }
 
-@media (max-width: 800px) {
-    .CurrentWeatherContainer {
-        justify-content: flex-start;
-    }
+.CurrentWeatherTitle {
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
-.CurrentWeather {
+.CurrentWeatherInfo {
     display: flex;
-    flex-direction: column;
-    margin: 2rem 1.5rem;
-    width: 25rem;
+    align-items: center;
 }
 
-@media (max-width: 800px) {
+.CurrentWeatherInfo > table tr td {
+/*    white-space: nowrap;
+    padding: 5px;*/
+}
+.CurrentWeatherInfo > table {
+    white-space: nowrap;
+    padding: 5px;
+    height: 180px;
+}
 
-
-    h4 {
-        font-weight: 600;
-        font-size: 1.25rem;
-        color: #396bae;
-        margin-bottom: 2rem;
+@media (max-width: 650px) {
+    .CurrentWeatherInfo {
+        justify-content: center;
+        flex-wrap: wrap;
     }
-
-    span {
-        font-weight: 200;
-        font-size: 7rem;
-        color: #4a6fa1;
-        margin-left: 1.5rem;
-        line-height: 1;
-    }
-
-    sup {
-        line-height: 0;
-    }
-
-    h6 {
-        font-size: 1.375rem;
-        text-align: left;
-        color: #7b98b2;
+    .CurrentWeatherInfo > table {
+        white-space: normal;
     }
 }

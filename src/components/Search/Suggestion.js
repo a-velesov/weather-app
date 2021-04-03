@@ -40,7 +40,7 @@ const Suggestion = ({
           <span className={ classes.SuggestionLink } onClick={ () => onClick(label) }>
             <i className="fas fa-map-marker-alt" /> { label }
           </span>
-          <span>{ weather.main.temp } °C</span>
+          <span className={classes.SuggestionTemp}>{ weather.main.temp } °C</span>
         </div>)
         : null }
     </>

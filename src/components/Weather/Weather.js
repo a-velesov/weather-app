@@ -23,12 +23,18 @@ const Weather = () => {
   return (
     <div className={classes.WeatherContainer }>
       <div className={classes.CurrentWeatherContainer}>
-        <div className={classes.CurrentWeather}>
-          <h4>{currentWeather?.name}</h4>
+          <h4 className={classes.CurrentWeatherTitle}>{currentWeather?.name}</h4>
 
-          <div style={{ display: 'flex' }}>
-            <WeatherIcon code={currentWeather?.weather?.id} big />
+          <div className={classes.CurrentWeatherInfo}>
+            <div>
+              <WeatherIcon code={currentWeather?.weather?.id} big />
+            </div>
             <table>
+              <tbody>
+              <tr>
+                <td>
+                </td>
+              </tr>
               <tr>
                 <td>Температура</td>
                 <td>{currentWeather?.main?.temp}<sup>&deg;</sup></td>
@@ -43,10 +49,16 @@ const Weather = () => {
               </tr>
               <tr>
                 <td>Давление</td>
-                <td>{currentWeather?.main?.pressure}мм рт.</td>
+                <td>{currentWeather?.main?.pressure} мм рт.</td>
               </tr>
+              </tbody>
             </table>
             <table>
+              <tbody>
+              <tr>
+                <td>
+                </td>
+              </tr>
               <tr>
                 <td>Осадки</td>
                 <td>{currentWeather?.weather?.description}</td>
@@ -63,9 +75,9 @@ const Weather = () => {
                 <td>Заход солнца</td>
                 <td>{currentWeather?.sys?.sunset.toLocaleString()}</td>
               </tr>
+              </tbody>
             </table>
           </div>
-        </div>
       </div>
     </div>
   );
