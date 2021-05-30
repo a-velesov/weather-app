@@ -7,7 +7,10 @@
 
 .CurrentWeatherContainer {
     padding: 25px 10px;
-    background: linear-gradient(45deg, #ffffff, transparent);
+    box-shadow: 15px 14px 21px -3px rgb(34 60 80 / 22%);
+    background: linear-gradient(
+            90deg
+            , rgb(255 255 255 / 52%) 0%, rgb(90 145 210 / 17%) 100%);
 }
 
 .CurrentWeatherTitle {
@@ -21,14 +24,15 @@
     align-items: center;
 }
 
-.CurrentWeatherInfo > table tr td {
-/*    white-space: nowrap;
-    padding: 5px;*/
-}
 .CurrentWeatherInfo > table {
     white-space: nowrap;
-    padding: 5px;
+    padding: 15px;
     height: 180px;
+}
+
+.CurrentWeatherInfo > table tr td {
+/*    white-space: nowrap;*/
+    padding: 5px;
 }
 
 @media (max-width: 650px) {

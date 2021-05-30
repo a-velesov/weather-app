@@ -5,8 +5,9 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import Suggestion from './Suggestion';
 import classes from './Seacrh.module.css';
 import { ReactComponent as SearchIcon } from './../../assets/img/search.svg';
+import { ReactComponent as TargetIcon } from './../../assets/img/target.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchWeatherFromApi } from '../../store/actions/weather';
+import { fetchWeatherFromApi, fetchCurrentWeatherFromApi } from '../../store/actions/weather';
 import { Route, withRouter } from 'react-router';
 import Weather from '../Weather/Weather';
 
@@ -50,14 +51,20 @@ const Search = (props) => {
     }
   };
 
-  /*  const showPosition = (position) => {
-   dispatch(
-   fetchWeatherFromApi({
-   lat: position.coords.latitude,
-   lng: position.coords.longitude,
-   })
-   );
-   };*/
+  const geoHandler = () => {
+    if (!navigator.geolocation) {
+      return alert('Geolocation is not supported by your browser!');
+    }
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      dispatch(
+        fetchCurrentWeatherFromApi({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        })
+      );
+    })
+  }
 
   return (
     <div className={ classes.Container }>
@@ -69,6 +76,17 @@ const Search = (props) => {
           right: '2rem',
           zIndex: 2,
           color: 'gray',
+          opacity: .7,
+        } }
+        />
+        <TargetIcon
+          onClick={geoHandler}
+          style={ {
+          width: '24px',
+          position: 'absolute',
+          bottom: '20px',
+          right: '5rem',
+          zIndex: 2,
           opacity: .7,
         } }
         />

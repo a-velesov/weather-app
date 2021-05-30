@@ -43,6 +43,7 @@ const transformWeatherData = (res) => {
 
   return {
     weather,
+    name: weather.name
   };
 };
 
@@ -56,7 +57,6 @@ export const fetchCurrentWeatherFromApi = (city) => {
         return Promise.all([res[0].json()]);
       })
       .then((res) => {
-        console.log(res, 'res');
         const { weather } = transformWeatherData(res);
         dispatch(fetchCurrentWeatherSuccess(weather));
         dispatch(setIsInitialState(false));
@@ -65,7 +65,7 @@ export const fetchCurrentWeatherFromApi = (city) => {
   }
 }
 
-export const fetchWeatherFromApi = (city, id, lat, lng) => {
+export const fetchWeatherFromApi = (city, id) => {
   return (dispatch) => {
     dispatch(setIsLoading(true));
     dispatch(fetchWeatherStart());
@@ -75,7 +75,9 @@ export const fetchWeatherFromApi = (city, id, lat, lng) => {
         return Promise.all([res[0].json()]);
       })
       .then((res) => {
-        const { weather } = transformWeatherData(res);
+        const { weather, name } = transformWeatherData(res);
+        console.log(name, 'name');
+        if (!id) id = name;
         dispatch(fetchWeatherSuccess(weather, id));
         dispatch(setIsInitialState(false));
         dispatch(setIsLoading(false));

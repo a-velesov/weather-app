@@ -24,7 +24,7 @@ export const Layout = () => {
       <main className={classes.Main}>
         <Search />
         {
-          currentWeather ? <Weather /> : null
+          currentWeather ? <Weather style={style} /> : null
         }
       </main>
       <HistoryList />
